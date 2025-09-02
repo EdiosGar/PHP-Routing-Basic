@@ -1,7 +1,12 @@
 <?php
 
-$nameCarpetaLocal = '/php-routing-basic/';
-$request = str_replace($nameCarpetaLocal, '/', $_SERVER['REQUEST_URI']);
+if($_SERVER["SERVER_NAME"] == 'localhost'){
+    $nameCarpetaLocal = '/php-routing-basic/';
+    $request = str_replace($nameCarpetaLocal, '/', $_SERVER['REQUEST_URI']);
+} else {
+    $request = $_SERVER['REQUEST_URI'];
+}
+
 $viewDir = '/views/';
 
 switch ($request) {
@@ -23,4 +28,6 @@ switch ($request) {
 echo "Request: $request";
 echo "<br>";
 echo "Path View: " . __DIR__ . $viewDir . 'home.php';
+echo "<br>";
+echo "Domanin: ".$_SERVER["SERVER_NAME"];
 ?>
