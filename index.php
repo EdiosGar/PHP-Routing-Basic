@@ -1,14 +1,19 @@
 <?php
-// Shear the solution
-$request = substr($_SERVER['REQUEST_URI'], 18);
-// $request = $_SERVER['SERVER_NAME'];
-// $request = str_replace($_SERVER['REQUEST_URI'],'/',$_SERVER['REQUEST_URI']);
+
+$nameCarpetaLocal = '/php-routing-basic/';
+$request = str_replace($nameCarpetaLocal, '/', $_SERVER['REQUEST_URI']);
 $viewDir = '/views/';
 
 switch ($request) {
     case '':
     case '/':
         require __DIR__ . $viewDir . 'home.php';
+        break;
+    case '/contact':
+        require __DIR__ . $viewDir . 'contact.php';
+        break;
+    case '/users':
+        require __DIR__ . $viewDir . 'users.php';
         break;
     default:
         http_response_code(404);
@@ -17,5 +22,5 @@ switch ($request) {
 
 echo "Request: $request";
 echo "<br>";
-echo "Ruta home: " . __DIR__ . $viewDir . 'home.php';
+echo "Path View: " . __DIR__ . $viewDir . 'home.php';
 ?>
